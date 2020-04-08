@@ -5,13 +5,14 @@
 #include "draw.h"
 #define BLOCK '/u2588'
 #define SPACE '/u0020'
+#define row 5
+#define col 5
 using namespace std;
-int row = 5;
-int col = 5;
 HANDLE console = GetStdHandle ( STD_OUTPUT_HANDLE );
 COORD src = {0, 0};
-COORD size = {row, row};
+COORD size = {col, row};
 CHAR_INFO scr[1000][1000];
+SMALL_RECT rect = {0, 0, col, row};
 char a[1000][1000];
 void ClrScr ( char atrib )
 {
@@ -28,37 +29,25 @@ void ClrScr ( char atrib )
 }
 void gameLoop()
 {
-    Sleep ( 1000 );
-    Sleep ( 1000 );
     ClrScr ( 0x7 );
     Sleep ( 1000 );
+    drawScreen ( scr, size, rect );
     Sleep ( 1000 );
-    drawScreen ( scr, size );
+    ClrScr ( 0x7 );
     Sleep ( 1000 );
     //qDraw.push()
     //cin >> x;
 }
 int main()
 {
-    for ( int i = 1; i <= row; i++ )
-        for ( int j = 1; j <= col; j++ )
+    for ( int i = 0; i < row; i++ )
+        for ( int j = 0; j < col; j++ )
             {
-//                if ( i == 0 || j == 0 )
-//                    {
-//                        a[i][j] = '#';
-//                        scr[i][j].Char.AsciiChar = '#';
-//                    }
-//                else
-//                    {
-//                        a[i][j] = '@';
-//                        scr[i][j].Char.AsciiChar = '#';
-//                    }
                 a[i][j] = '#';
-                scr[i - 1][j - 1].Char.AsciiChar = '#';
-                scr[i - 1][j - 1].Attributes = 0x7;
+                scr[i][j].Char.AsciiChar = '#';
+                scr[i][j].Attributes = 0x7;
             }
 
-    drawScreen ( scr, size );
     gameLoop();
     return 0;
 }
