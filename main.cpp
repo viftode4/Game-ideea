@@ -5,47 +5,35 @@
 #include "draw.h"
 #define BLOCK '/u2588'
 #define SPACE '/u0020'
-#define row 5
-#define col 5
+#define row 60
+#define col 230
 using namespace std;
 HANDLE console = GetStdHandle ( STD_OUTPUT_HANDLE );
 COORD src = {0, 0};
-COORD size = {col, row};
-CHAR_INFO scr[1000][1000];
-SMALL_RECT rect = {0, 0, col, row};
-char a[1000][1000];
-void ClrScr ( char atrib )
-{
-    //ia informatia despre buffer
-    //e un struct dubios
-    DWORD sizee = row * col;
-    DWORD count;
-    // fill unde, cu ce caracter, cat, si de unde si cat pana acum
-    FillConsoleOutputCharacter ( console, ' ', sizee, src, &count );
-    // sa fie tot aceeasi culoare si atribute de caracter
-    FillConsoleOutputAttribute ( console, atrib, sizee, src, &count );
-    //seteaza cursorul in 0,0
-    SetConsoleCursorPosition ( console, src );
-}
+COORD size = {row, col + 1};
+char scr[row][col + 1];
+int x;
 void gameLoop()
 {
-    ClrScr ( 0x7 );
+    ClrScr ( 0x7, size );
     Sleep ( 1000 );
-    drawScreen ( scr, size, rect );
+    drawScreen ( ( char* ) scr, size );
+    ClrScrprost ( console, src );
     Sleep ( 1000 );
-    ClrScr ( 0x7 );
+    drawScreen ( ( char* ) scr, size );
     Sleep ( 1000 );
-    //qDraw.push()
-    //cin >> x;
 }
 int main()
 {
+    SetConsoleTextAttribute ( console, 0x7 );
+
     for ( int i = 0; i < row; i++ )
-        for ( int j = 0; j < col; j++ )
+        for ( int j = 0; j <= col; j++ )
             {
-                a[i][j] = '#';
-                scr[i][j].Char.AsciiChar = '#';
-                scr[i][j].Attributes = 0x7;
+                scr[i][j] = '#';
+
+                if ( j == col )
+                    scr[i][j] = '\n';
             }
 
     gameLoop();
