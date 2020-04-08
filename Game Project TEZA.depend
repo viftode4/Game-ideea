@@ -19,3 +19,18 @@
 
 1586344369 c:\users\gandalf\desktop\teza\game project teza\draw.h
 
+1586355730 source:c:\users\gandalf\desktop\teza\game project teza\game-ideea\draw.cpp
+	<iostream>
+	"draw.h"
+
+1586353602 c:\users\gandalf\desktop\teza\game project teza\game-ideea\draw.h
+	<Windows.h>
+
+1586355432 source:c:\users\gandalf\desktop\teza\game project teza\game-ideea\main.cpp
+	<Windows.h>
+	<iostream>
+	"shapes.h"
+	"draw.h"
+
+1586352544 c:\users\gandalf\desktop\teza\game project teza\game-ideea\shapes.h
+

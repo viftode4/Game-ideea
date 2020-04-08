@@ -15,10 +15,10 @@ public:
     void setRect ( int a, int b, int c, int d ) {
         x = a, y = b, n = c, m = d;
     }
-    void draw ( char screen[100][100] ) {
+    void draw ( char scr[1000][1000] ) {
         for ( int i = x; i < x + n; i++ )
             for ( int j = y; j < y + m; j++ )
-                screen[i][j] = '#';
+                scr[i][j] = '#';
     }
 };
 #endif

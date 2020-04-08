@@ -1,2 +1,4 @@
-void drawScreen(char c[100][100], int a, int b);
+#include <Windows.h>
+void drawScreen ( CHAR_INFO scr[1000][1000], COORD size );
+
 
