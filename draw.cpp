@@ -3,10 +3,18 @@
 using namespace std;
 void drawScreen ( char *scr, COORD size )
 {
+    COORD src = {0, 0};
     HANDLE console = GetStdHandle ( STD_OUTPUT_HANDLE );
     DWORD count;
     DWORD cellCount = size.X * size.Y;
     WriteConsole ( console, ( char* ) scr, cellCount, &count, NULL );
+    SetConsoleCursorPosition ( console, src );
+}
+void ClrScrprost ( )
+{
+    HANDLE console = GetStdHandle ( STD_OUTPUT_HANDLE );
+    COORD src = {0, 0};
+    SetConsoleCursorPosition ( console, src );
 }
 void ClrScr ( char atrib, COORD size )
 {
