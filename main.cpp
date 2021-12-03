@@ -40,7 +40,7 @@ void intro()
                     scr[i + centre.X][j + centre.Y] = ani[i][j];
             ClrScr ( 0x7, size );
             drawScreen ( ( char* ) scr, size );
-            Sleep ( 1000 );
+            Sleep ( 500 );
         }
 }
 void init()
